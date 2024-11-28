@@ -170,7 +170,8 @@ namespace KasefetExt
         public void SaveFile()
         {
             var kc = _firstProduct.U_KASEFET_CATEGORY ?? "";
-            var fn = "M_" + kc + "_" + CODE_LAB + "_" + Sdg.Name + "_" + DateTime.Now.ToString("ddMMyyyyhhmmss");
+            var coaName = dal.GetAll<COA_Report>().Where(x => x.SdgId == Sdg.SdgId).FirstOrDefault().Name;
+            var fn = "M_" + kc + "_" + CODE_LAB + "_" + Sdg.Name + "_" + DateTime.Now.ToString("ddMMyyyyhhmmss") + "_" + coaName;
 
             var ph = dal.GetPhraseByName("Location folders");
 
